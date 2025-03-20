@@ -73,3 +73,8 @@
   transition: 0.1s;
   fill: var(--danger); /* Muda a cor do ícone ao passar o mouse */
 }
+
+
+.sublined {
+  text-decoration: line-through;
+}

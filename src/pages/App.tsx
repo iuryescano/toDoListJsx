@@ -3,10 +3,13 @@ import './App.css'
 import rocketImage from '../assets/rocket.png'
 import addon from '../assets/addon.png'
 import clipboard from '../assets/Clipboard.png'
-import { Task } from '../components/Task.jsx'
+import { Task } from '../components/Task'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const tasks = [
+    {id: 1, text: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."},
+    {id: 2, text: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."}
+  ];
 
   return (
     <>
@@ -30,19 +33,27 @@ function App() {
           </div>
           <div className='content'>
             <div className='titles'>
-              <p>Tarefas criadas <p>2</p></p>
-              <p>Concluidas <p>2</p></p>
+              <div>
+                <p>Tarefas criadas </p><p>2</p>
+              </div>
+              <div>
+                <p>Concluidas </p><p>2</p>
+              </div>
             </div>
+            {tasks.length === 0 ? (
+              <div className='empty'>
 
-            <div className='empty'>
-
-              <img src={clipboard} alt="clipboard"></img>
-              <p>Você ainda não tem tarefas cadastradas <br/>
-              Crie tarefas e organize seus itens a fazer</p>
+                <img src={clipboard} alt="clipboard"></img>
+                <p>Você ainda não tem tarefas cadastradas <br/>
+                Crie tarefas e organize seus itens a fazer</p>
+              </div>
+              ) : (
+                  tasks.map((task) => (
+                    <Task key={task.id} title={task.text} />
+                  ))
+              )
+            }
             </div>
-
-            <Task title={"Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."}></Task>
-          </div>
         </main>
       </div>
     </>
