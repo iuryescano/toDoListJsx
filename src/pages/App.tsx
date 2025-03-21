@@ -6,10 +6,17 @@ import clipboard from '../assets/Clipboard.png'
 import { Task } from '../components/Task'
 
 function App() {
-  const tasks = [
+  const [tasks, setTasks] = useState([
     {id: 1, text: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."},
-    {id: 2, text: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."}
-  ];
+    {id: 2, text: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."},
+    {id: 3, text: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames Teste."}
+  ]);
+
+  const [newTask, setNewTask] = useState("");
+
+  function handleAddTask() {
+    console.log(newTask)
+  }
 
   return (
     <>
@@ -24,9 +31,9 @@ function App() {
         <main>
           <div className = 'search-task'>
             <div className='input-container'>
-              <input type="text" placeholder='Adicione uma nova tarefa'/>
+              <input type="text" placeholder='Adicione uma nova tarefa' value={newTask} onChange={(e) => setNewTask(e.target.value)}/>
             </div>
-            <button className='createButton'>
+            <button className='createButton' onClick={handleAddTask}>
                 Criar 
                 <img src={addon} alt="botao de adicioonar" />
             </button>
@@ -49,7 +56,7 @@ function App() {
               </div>
               ) : (
                   tasks.map((task) => (
-                    <Task key={task.id} title={task.text} />
+                    <Task key={task.id} id={task.id} title={task.text} />
                   ))
               )
             }
