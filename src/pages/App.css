@@ -81,8 +81,36 @@ header {
 .titles {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  padding: 0.5rem;
+  width: 45rem;
+  margin-top: 2rem;
+}
+
+.tasksConclude {
+  display: flex;
+  gap: 1rem;
+}
+
+.Conclude {
+  font-weight: bold;
+  color: var(--purple-dark);
+}
+
+.numbers {
+  background-color: var(--gray-400);
+  border-radius: 2rem;
+  color: white;
+  padding: 0rem 0.7rem;
+  font-weight: bold;
+}
+
+.tasksCreated {
+  display: flex;
+  gap: 1rem;
+}
+
+.Created {
+  color: var(--blue);
+  font-weight: bold;
 }
 
 .empty {

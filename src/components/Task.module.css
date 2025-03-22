@@ -1,18 +1,17 @@
 .Task {
-  height: 4rem;
+  height: 4.5rem;
   width: 46rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; /* Espaça os itens entre os extremos */
   align-items: center;
-  gap: 5rem;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   background: var(--gray-500);
-  
 }
 
 .Content {
   display: flex;
+  align-items: center; /* Alinha o checkbox e o texto verticalmente */
   gap: 1rem;
 }
 
@@ -21,8 +20,8 @@
 }
 
 .checkboxLabel {
-  width: 2rem;
-  height: 1.5rem;
+  width: 1.5rem; /* Define a largura fixa */
+  height: 1.5rem; /* Define a altura fixa */
   background-color: none;
   border: 2px solid var(--blue);
   border-radius: 50%;
@@ -38,11 +37,12 @@
 .checkboxLabel::after {
   content: '';
   position: absolute;
-  top: 15%;
-  left: 55%;
+  top: 25%;
+  left: 60%;
   width: 10px;
   height: 10px;
   border: none;
+  transform: translate(-50%, -50%) scale(0);
   transition: transform 0.1s ease-in;
 }
 
@@ -73,7 +73,6 @@
   transition: 0.1s;
   fill: var(--danger); /* Muda a cor do ícone ao passar o mouse */
 }
-
 
 .sublined {
   text-decoration: line-through;

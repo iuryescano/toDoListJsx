@@ -14,8 +14,16 @@ function App() {
 
   const [newTask, setNewTask] = useState("");
 
+
   function handleAddTask() {
-    console.log(newTask)
+    const task = [...tasks, {id: tasks.length + 1, text: newTask}];
+    setTasks(task);
+    console.log(task);
+    setNewTask('');
+    //console.log(tasks);
+    //console.log(setTasks);
+    //console.log(newTask);
+    //console.log(setNewTask);
   }
 
   return (
@@ -40,11 +48,11 @@ function App() {
           </div>
           <div className='content'>
             <div className='titles'>
-              <div>
-                <p>Tarefas criadas </p><p>2</p>
+              <div className='tasksCreated'>
+                <p className='Created'>Tarefas criadas </p><p className='numbers'>{tasks.length}</p>
               </div>
-              <div>
-                <p>Concluidas </p><p>2</p>
+              <div className='tasksConclude'>
+                <p className='Conclude'>Concluidas </p><p className='numbers'>2 de 5</p>
               </div>
             </div>
             {tasks.length === 0 ? (
