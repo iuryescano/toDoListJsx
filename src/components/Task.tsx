@@ -2,10 +2,16 @@ import styles from './Task.module.css';
 import { GoTrash } from "react-icons/go";
 import { useState } from 'react';
 
-export function Task({ id, title }) {
+interface TaskProps {
+  id: number;
+  title: string;
+  onDeleteTask: (task: number) => void;
+}
+
+export function Task({ id, title, onDeleteTask}: TaskProps) {
   const [isSublined, setSublinedText] = useState(false);
 
-  const handleSublineText = () => {
+  const handleSublineText = ( ) => {
     setSublinedText(!isSublined);
   }
 
@@ -16,7 +22,7 @@ export function Task({ id, title }) {
         <label htmlFor={`checkbox-${id}`} className={styles.checkboxLabel}></label>
         <p className={isSublined ? styles.sublined : ''}>{title}</p>
       </div>
-      <button className={styles.removeButton}>
+      <button className={styles.removeButton} onClick={() => onDeleteTask(id)}>
         <GoTrash />
       </button>
     </div>

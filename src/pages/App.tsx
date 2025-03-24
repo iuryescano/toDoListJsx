@@ -3,7 +3,7 @@ import './App.css'
 import rocketImage from '../assets/rocket.png'
 import addon from '../assets/addon.png'
 import clipboard from '../assets/Clipboard.png'
-import { Task } from '../components/Task'
+import { Task } from '../components/Task.tsx'
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -24,6 +24,14 @@ function App() {
     //console.log(setTasks);
     //console.log(newTask);
     //console.log(setNewTask);
+  }
+
+  function handleRemoveTask(taskToDelete: number) {
+    const tagsWithoutDeleteOne = tasks.filter(task => {
+      return task.id !== taskToDelete;
+    })
+    //setTasks(tagsWithoutDeleteOne);
+    console.log(tagsWithoutDeleteOne)
   }
 
   return (
@@ -64,8 +72,8 @@ function App() {
               </div>
               ) : (
                   tasks.map((task) => (
-                    <Task key={task.id} id={task.id} title={task.text} />
-                  ))
+                    <Task key={task.id} id={task.id} title={task.text} onDeleteTask={handleRemoveTask}/>
+                  )) 
               )
             }
             </div>
