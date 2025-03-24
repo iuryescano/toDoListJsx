@@ -6,13 +6,15 @@ interface TaskProps {
   id: number;
   title: string;
   onDeleteTask: (task: number) => void;
+  onToggleTaskCompletion: (isCompletion: boolean) => void;
 }
 
-export function Task({ id, title, onDeleteTask}: TaskProps) {
+export function Task({ id, title, onDeleteTask, onToggleTaskCompletion}: TaskProps) {
   const [isSublined, setSublinedText] = useState(false);
 
-  const handleSublineText = ( ) => {
+  const handleSublineText = () => {
     setSublinedText(!isSublined);
+    onToggleTaskCompletion(!isSublined)
   }
 
   return (

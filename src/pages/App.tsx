@@ -14,6 +14,8 @@ function App() {
 
   const [newTask, setNewTask] = useState("");
 
+  const [ countTaskCompleted, setCountTaskCompleted ] = useState<number>(0);
+
 
   function handleAddTask() {
     const task = [...tasks, {id: tasks.length + 1, text: newTask}];
@@ -30,9 +32,15 @@ function App() {
     const tagsWithoutDeleteOne = tasks.filter(task => {
       return task.id !== taskToDelete;
     })
-    //setTasks(tagsWithoutDeleteOne);
-    console.log(tagsWithoutDeleteOne)
+    setTasks(tagsWithoutDeleteOne);
+    //console.log(tagsWithoutDeleteOne)
   }
+  
+  function handleCountTaskCompleted() {
+    setCountTaskCompleted((prev) => prev + 1)
+    console.log(`A minha lista de tarefas que estão completas é ${tasks}`)
+  }
+
 
   return (
     <>
@@ -60,7 +68,7 @@ function App() {
                 <p className='Created'>Tarefas criadas </p><p className='numbers'>{tasks.length}</p>
               </div>
               <div className='tasksConclude'>
-                <p className='Conclude'>Concluidas </p><p className='numbers'>2 de 5</p>
+                <p className='Conclude'>Concluidas </p><p className='numbers'>{countTaskCompleted} de {tasks.length}</p>
               </div>
             </div>
             {tasks.length === 0 ? (
@@ -72,7 +80,7 @@ function App() {
               </div>
               ) : (
                   tasks.map((task) => (
-                    <Task key={task.id} id={task.id} title={task.text} onDeleteTask={handleRemoveTask}/>
+                    <Task key={task.id} id={task.id} title={task.text} onDeleteTask={handleRemoveTask} onToggleTaskCompletion= {handleCountTaskCompleted}/>
                   )) 
               )
             }
