@@ -12,7 +12,7 @@ function App() {
     {id: 3, text: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames Teste."}
   ]);
 
-  const [newTask, setNewTask] = useState("");
+  const [newTask, setNewTask] = useState<string>("");
 
   const [ countTaskCompleted, setCountTaskCompleted ] = useState<number>(0);
 
@@ -36,9 +36,8 @@ function App() {
     //console.log(tagsWithoutDeleteOne)
   }
   
-  function handleCountTaskCompleted() {
-    setCountTaskCompleted((prev) => prev + 1)
-    console.log(`A minha lista de tarefas que estão completas é ${tasks}`)
+  function handleCountTaskCompleted(isCompleted: boolean) {
+    setCountTaskCompleted((prev) => isCompleted ? prev + 1 : prev - 1);
   }
 
 
